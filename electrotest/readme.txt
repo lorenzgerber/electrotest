@@ -1,1 +1,1 @@
-gcc -Wall -o electrotest main.c -lresistance
+gcc -Wall -o electrotest main.c -lresistance -lpower
