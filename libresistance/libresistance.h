@@ -3,5 +3,5 @@
  *
  */
 
-extern float calc_resistance(int count, char conn, float *array);
+float calc_resistance(int count, char conn, float *array);
 
