@@ -9,7 +9,7 @@ all: electrotest_local
 
 install: electrotest
 
-lib: libpower.so libresistance.so
+lib: libpower.so libresistance.so libcomponent.so
 
 electrotest_local: electrotest.o libresistance.so libpower.so
 	mkdir ./lib
@@ -24,11 +24,17 @@ electrotest: electrotest.o libresistance.so libpower.so
 electrotest.o: electrotest.c
 	$(CC) $(CFLAGS) -c electrotest.c
 
+libcomponent.so: libcomponent.o
+	$(CC) $(CFLAGS) -shared -o libcomponent.so libcomponent.o
+
 libresistance.so: libresistance.o
 	$(CC) $(CFLAGS) -shared -o libresistance.so libresistance.o
 
 libpower.so: libpower.o
 	$(CC) $(CFLAGS) -shared -o libpower.so libpower.o
+
+libcomponent.o: libcomponent.c
+	$(CC) $(CFLAGS) -c -fPIC libcomponent.c
 
 libresistance.o: libresistance.c libresistance.h
 	$(CC) $(CFLAGS) -c -fPIC libresistance.c
@@ -45,3 +51,4 @@ uninstall:
 	rm -f rm /usr/lib/libpower.so
 	rm -fr rm ./lib
 	rm -f rm ./electrotest
+	rm -f rm ./libcomponent.so ./libresistance.so ./libpower.so

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../libresistance/libresistance.h"
-#include "../libpower/libpower.h"
+#include "libresistance.h"
+#include "libpower.h"
 
 int main(int argc, char **argv) 
 {
