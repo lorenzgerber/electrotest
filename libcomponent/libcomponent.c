@@ -3,8 +3,10 @@
 #include <math.h>
 
 //declarations
+int findresistors (float orig_resistance, float *res_array);
 int countplaces(float resid);
 float* calcE12(float remaining);	
+
 
 //main function, accepts argument (resistor value) from Lib1 
 //************************************************************

@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 //declarations
-int findresistors(float orig_resistance, float *res_array);
+int findresistors (float orig_resistance, float *res_array);
 float res_array[3]; 
 int answer;
  
