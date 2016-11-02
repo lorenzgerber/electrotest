@@ -7,8 +7,8 @@
  *
  */
 
+#include "libpower.h"
 
-#include <stdio.h>
 
 /**
  * 
