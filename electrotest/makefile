@@ -43,7 +43,7 @@ libpower.o: libpower.c libpower.h
 	$(CC) $(CFLAGS) -c -fPIC libpower.c
 
 clean:
-	rm -f rm *.o
+	rm -f rm *.o *.so
 
 uninstall:
 	rm -f rm /usr/bin/electrotest
