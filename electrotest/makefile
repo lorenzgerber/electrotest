@@ -17,9 +17,9 @@ electrotest_local: electrotest.o libresistance.so libpower.so libcomponent.so
 	$(CC) $(CFLAGS) -o electrotest electrotest.o -L./lib -lresistance -lpower -lcomponent -Wl,-rpath,./lib
 
 electrotest: electrotest.o libresistance.so libpower.so libcomponent.so
-	sudo mv libresistance.so libpower.so libcomponent.so /usr/lib
+	mv libresistance.so libpower.so libcomponent.so /usr/lib
 	$(CC) $(CFLAGS) -o electrotest electrotest.o -L/usr/lib -lresistance -lpower -lcomponent
-	sudo mv ./electrotest /usr/bin
+	mv ./electrotest /usr/bin
 
 electrotest.o: electrotest.c
 	$(CC) $(CFLAGS) -c electrotest.c
@@ -48,8 +48,8 @@ clean:
 	rm -f rm ./electrotest
 
 uninstall: clean
-	sudo rm -f rm /usr/bin/electrotest
-	sudo rm -f rm /usr/lib/libresistance.so
-	sudo rm -f rm /usr/lib/libpower.so
-	sudo rm -f rm /usr/lib/libcomponent.so
+	rm -f rm /usr/bin/electrotest
+	rm -f rm /usr/lib/libresistance.so
+	rm -f rm /usr/lib/libpower.so
+	rm -f rm /usr/lib/libcomponent.so
 
