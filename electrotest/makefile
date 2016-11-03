@@ -47,7 +47,7 @@ clean:
 	rm -fr rm ./lib
 	rm -f rm ./electrotest
 
-uninstall: clean
+uninstall:
 	rm -f rm /usr/bin/electrotest
 	rm -f rm /usr/lib/libresistance.so
 	rm -f rm /usr/lib/libpower.so
