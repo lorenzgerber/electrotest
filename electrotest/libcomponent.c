@@ -15,7 +15,7 @@ int findresistors (float orig_resistance, float *res_array){
 	int resistorsneeded = 0;  //actual resistors needed- the output
 	
 	//temp print function
-	printf("\nE12 resistors (first three values in *res_array) that best match the orig_resistance value of %f: \n", orig_resistance);
+	//printf("\nE12 resistors (first three values in *res_array) that best match the orig_resistance value of %f: \n", orig_resistance);
 	
 	//while loop to find closest matching set of resistors for a given input resistor value
 	while (resisnum < 3){  //only want three values returned (from 0-x)

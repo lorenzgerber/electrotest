@@ -3,8 +3,9 @@
 #include <string.h>
 #include "libresistance.h"
 #include "libpower.h"
+#include "libcomponent.h"
 
-int main(int argc, char **argv) 
+int main(int argc, char **argv, float *res_array) 
 {
 	float* resistances;  // Pekare till array med värden
 	float inputvalue;
@@ -72,6 +73,14 @@ int main(int argc, char **argv)
 	printf("Ersättningsresistans:\n %.1f ohm\n", resistance);
 	printf("Effekt:\n %.2f W\n", power);
 
+	/*libcomponent */
+	float orig_resistance = resistance;
+	int answer;
+	answer = findresistors(orig_resistance, res_array);
+	printf("Ersättningsresistanser i E12-serien kopplade i serie:\n");
+	int j;
+	for (j = 0; j < answer; j++) printf("%.1f  \n", res_array[j]);
+	
 	goto cleanup;
 
 cleanup:
