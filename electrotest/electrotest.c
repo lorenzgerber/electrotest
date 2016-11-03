@@ -5,7 +5,7 @@
 #include "libpower.h"
 #include "libcomponent.h"
 
-int main(int argc, char **argv, float *res_array) 
+int main(void) 
 {
 	float* resistances;  // Pekare till array med värden
 	float inputvalue;
@@ -16,6 +16,7 @@ int main(int argc, char **argv, float *res_array)
 	float resistance;
 	char method;
 	int loop;
+	float res_array[3];
 
 	/* Spänning */
 	printf("Ange spänningskälla i V: ");
