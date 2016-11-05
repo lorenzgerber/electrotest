@@ -1,22 +1,61 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "libpower.h"
 
 
-int main(int argc, char *argv[]){
+int main(void){
 
-  if (argc < 3){
-    fprintf(stderr, "Usage: test volt resistance\n");
-    exit(EXIT_FAILURE);
-  }
-
+  char userInput[10];
   float result;
-  float volt = atof(argv[1]);
-  float resistance = atof(argv[2]);
+  float volt; 
+  float resistance;
+  float current;
+
+  do {
+
+    printf("Make a choice:\n");
+    printf("'I' - calculate P = U * I\n");
+    printf("'R' - calculate P = U^2 / R\n\n");
+    printf("'q' - quit\n");
+
+    if(fgets(userInput, sizeof(userInput), stdin)==NULL){
+      perror("fgets");
+    }
+
+    if(userInput[0] == 82){
+      printf("Please enter voltage V\n");
+      if(fgets(userInput, sizeof(userInput), stdin)==NULL){
+	perror("fgets");
+      }
+      volt = atof(userInput);
+      printf("Please enter resistance (Ohm):\n");
+
+      if(fgets(userInput, sizeof(userInput), stdin)==NULL){
+	perror("fgets");
+      }
+      resistance = atof(userInput);
+      result = calc_power_r(volt, resistance);
+      printf("\nResult:\n%4.2f^2 / %4.2f = %4.2f \n\n\n", volt, resistance, result);
+    }
+
+    if(userInput[0] == 73){
+
+      printf("Please enter voltage V\n");
+
+      if(fgets(userInput, sizeof(userInput), stdin)==NULL){
+	perror("fgets");
+      }
+      volt = atof(userInput);
+      printf("Please enter current (Ampere):\n");
+      if(fgets(userInput, sizeof(userInput), stdin)==NULL){
+	perror("fgets");
+      }
+      current = atof(userInput);
+      result = calc_power_i(volt, current);
+      printf("\nResult\n%4.2f / 2 / %4.2f = %4.2f \n\n\n", volt, resistance, result);
+    }
+  } while (userInput[0] != 113);
   
-  result = calc_power_r(volt, resistance);
-  printf(" %f^2 / %f = %f \n", volt, resistance, result);
+    
 
   return 0;
 }
