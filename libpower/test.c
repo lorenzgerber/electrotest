@@ -1,7 +1,23 @@
+/**
+ * @file test.c
+ *
+ * @author Lorenz Gerber
+ * @date 31.10.2016
+ * @brief Test program for the libpower library.
+ *
+ */
+
 #include <stdio.h>
 #include "libpower.h"
 
-
+/**
+ * @fn main 
+ * this function is used to test the libpower library
+ * 
+ * This function does not take any command line argument.
+ * @return int, the function returns zero on succes
+ *
+ */
 int main(void){
 
   char userInput[10];

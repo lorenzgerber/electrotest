@@ -1,0 +1,32 @@
+\begin{theindex}
+
+  \item {calc\+\_\+power\+\_\+i}
+    \subitem {libpower.\+c}, \hyperpage{4}
+    \subitem {libpower.\+h}, \hyperpage{6}
+  \item {calc\+\_\+power\+\_\+r}
+    \subitem {libpower.\+c}, \hyperpage{4}
+    \subitem {libpower.\+h}, \hyperpage{7}
+
+  \indexspace
+
+  \item {libpower.\+c}
+    \subitem {calc\+\_\+power\+\_\+i}, \hyperpage{4}
+    \subitem {calc\+\_\+power\+\_\+r}, \hyperpage{4}
+  \item {libpower.\+h}
+    \subitem {calc\+\_\+power\+\_\+i}, \hyperpage{6}
+    \subitem {calc\+\_\+power\+\_\+r}, \hyperpage{7}
+  \item {libpower/libpower.\+c}, \hyperpage{3}
+  \item {libpower/libpower.\+h}, \hyperpage{5}
+  \item {libpower/test.\+c}, \hyperpage{7}
+
+  \indexspace
+
+  \item {main}
+    \subitem {test.\+c}, \hyperpage{8}
+
+  \indexspace
+
+  \item {test.\+c}
+    \subitem {main}, \hyperpage{8}
+
+\end{theindex}

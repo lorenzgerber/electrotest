@@ -1,0 +1,112 @@
+\hypertarget{libpower_8h}{}\section{libpower/libpower.h File Reference}
+\label{libpower_8h}\index{libpower/libpower.\+h@{libpower/libpower.\+h}}
+
+
+dynamic library for calculating power from resistance or current.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Include dependency graph for libpower.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{libpower_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{libpower_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{libpower_8h_ac075500b29b883b6c3ec6d6d6b91d73c}{calc\+\_\+power\+\_\+r} (float volt, float resistance)
+\begin{DoxyCompactList}\small\item\em function to calculate power from voltage and resistance \end{DoxyCompactList}\item 
+float \hyperlink{libpower_8h_a1f0fd46c93dd4e37cd60b06026ba174f}{calc\+\_\+power\+\_\+i} (float volt, float current)
+\begin{DoxyCompactList}\small\item\em function to calculate power from voltage and current \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+dynamic library for calculating power from resistance or current. 
+
+\begin{DoxyAuthor}{Author}
+Lorenz Gerber 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+31.\+10.\+2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{libpower.\+h@{libpower.\+h}!calc\+\_\+power\+\_\+i@{calc\+\_\+power\+\_\+i}}
+\index{calc\+\_\+power\+\_\+i@{calc\+\_\+power\+\_\+i}!libpower.\+h@{libpower.\+h}}
+\subsubsection[{\texorpdfstring{calc\+\_\+power\+\_\+i(float volt, float current)}{calc_power_i(float volt, float current)}}]{\setlength{\rightskip}{0pt plus 5cm}float calc\+\_\+power\+\_\+i (
+\begin{DoxyParamCaption}
+\item[{float}]{volt, }
+\item[{float}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{libpower_8h_a1f0fd46c93dd4e37cd60b06026ba174f}{}\label{libpower_8h_a1f0fd46c93dd4e37cd60b06026ba174f}
+
+
+function to calculate power from voltage and current 
+
+The function calculates power in watt according to the formula volt$\ast$ current
+
+
+\begin{DoxyParams}{Parameters}
+{\em volt} & float, Voltage in volt \\
+\hline
+{\em current} & float, current in ampere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+power float, Power in watt 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{libpower_8h_a1f0fd46c93dd4e37cd60b06026ba174f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{libpower.\+h@{libpower.\+h}!calc\+\_\+power\+\_\+r@{calc\+\_\+power\+\_\+r}}
+\index{calc\+\_\+power\+\_\+r@{calc\+\_\+power\+\_\+r}!libpower.\+h@{libpower.\+h}}
+\subsubsection[{\texorpdfstring{calc\+\_\+power\+\_\+r(float volt, float resistance)}{calc_power_r(float volt, float resistance)}}]{\setlength{\rightskip}{0pt plus 5cm}float calc\+\_\+power\+\_\+r (
+\begin{DoxyParamCaption}
+\item[{float}]{volt, }
+\item[{float}]{resistance}
+\end{DoxyParamCaption}
+)}\hypertarget{libpower_8h_ac075500b29b883b6c3ec6d6d6b91d73c}{}\label{libpower_8h_ac075500b29b883b6c3ec6d6d6b91d73c}
+
+
+function to calculate power from voltage and resistance 
+
+The function calculates power in watt according to the formula volt$^\wedge$2/resistance 
+\begin{DoxyParams}{Parameters}
+{\em volt} & float, Voltage in volt \\
+\hline
+{\em resistance} & float, Resistance in ohm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+power float, Power in watt 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{libpower_8h_ac075500b29b883b6c3ec6d6d6b91d73c_icgraph}
+\end{center}
+\end{figure}
+
+

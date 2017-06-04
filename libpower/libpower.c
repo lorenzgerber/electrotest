@@ -16,9 +16,9 @@
  *
  * The function calculates power in watt according to the formula volt^2/resistance
  *
- * @param float volt Voltage in volt
- * @param float resistance Resistance in ohm
- * @return float power Power in watt
+ * @param volt float, Voltage in volt
+ * @param resistance float, Resistance in ohm
+ * @return power float, Power in watt
  *
  */
 float calc_power_r(float volt, float resistance)
@@ -39,9 +39,9 @@ float calc_power_r(float volt, float resistance)
  *
  * The function calculates power in watt according to the formula volt* current
  *
- * @param float volt Voltage in volt 
- * @param float resistance Resistance in ohm
- * @return float power Power in watt
+ * @param volt float, Voltage in volt 
+ * @param current float, current in ampere
+ * @return power float, Power in watt
  *
  */
 float calc_power_i(float volt, float current)

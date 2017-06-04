@@ -1,9 +1,21 @@
+/**
+ * The main class of Electrotest
+ *
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../libresistance/libresistance.h"
 #include "../libpower/libpower.h"
 
+
+/**
+ *  The main function
+ *  @param argc number of arguments
+ *  @param pointer to char array with the actual arguments
+ */
 int main(int argc, char **argv) 
 {
 	float* resistances;  // Pekare till array med värden

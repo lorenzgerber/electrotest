@@ -1,0 +1,213 @@
+#!/bin/bash
+
+# test_electro
+#
+# test script for the
+# electrotest application
+#
+# Lorenz Gerber 30.05.17
+
+# Check input args
+if [ $# -eq 0 ]
+then
+    echo "Usage: test_electro.sh /path/to/electrotest"
+    exit
+fi
+
+if ! [ $1 == *"electrotest" ] && ! [ -e $1 ]
+then
+    echo "Usage: test_electro.sh /path/to/electrotest"
+fi
+
+
+# Test normal operation with serial resitance
+
+./electrotest >out.txt <<EOF &
+1
+S
+2
+13
+31
+EOF
+
+lastPid=$!
+echo -e "\e[33mnormal operation, serial resistances:"
+
+if grep -q "0.02 W" out.txt \
+	&& grep -q "44.0 ohm" out.txt \
+	&& grep -q "39.0" out.txt \
+	&& grep -q "4.7" out.txt
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+# test normal operation with parallel resistance
+./electrotest >out.txt <<EOF
+1
+P
+2
+3
+4
+EOF
+
+lastPid=$!
+echo -e "\e[33mnormal operation, parallel resistances:"
+
+if grep -q "0.58 W" out.txt \
+	&& grep -q "1.7 ohm" out.txt \
+	&& grep -q "1.5" out.txt
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+# negative number of resistors
+./electrotest >out.txt <<EOF 2>/dev/null
+1
+P
+-1
+1
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch negative number of resitors:"
+
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+
+
+# wrong resistnace values string,
+# checks if exist status is 
+./electrotest >out.txt <<EOF 2>/dev/null
+1
+P
+2
+P
+P
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch string as resistance value:"
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+
+# wrong resistance values negative
+./electrotest >out.txt <<EOF 2>/dev/null
+1
+P
+2
+-10
+-10
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch negative resistance values:"
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+# Check for division by zero errors
+./electrotest >out.txt <<EOF 2>/dev/null
+0
+P
+1
+0
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch division by zero:"
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+# Check extreme values on resistance
+./electrotest >out.txt <<EOF 2>/dev/null
+1
+P
+1
+1e20
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch out of range value:"
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+# Check extreme values on number of resistors
+./electrotest  >out.txt <<EOF 2>/dev/null &
+1
+P
+10000000000000000000000000000000000000000000000000000000000000000000000000000000000
+1
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch out of range components:"
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+#kill $lastPid 2>/dev/null
+
+echo $lastPid
+
+# Check extreme values on voltage
+./electrotest  >out.txt <<EOF 2>/dev/null & 
+1
+P
+1
+1
+EOF
+status=$?
+lastPid=$!
+echo -e "\e[33mcatch out of range voltage:"
+if [ $status -ne 0 ]
+then
+    echo -e "\t\t\t\t\t\t\e[32mSUCCESS"
+else
+    echo -e "\t\t\t\t\t\t\e[31mFAIL"
+fi
+
+kill $lastPid 2>/dev/null
+
+echo $lastPid
