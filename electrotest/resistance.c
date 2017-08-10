@@ -1,8 +1,8 @@
 /**
- * libresistance.c
+ * resistance.c
  *
- * Library for calculating total resistance 
- * from an array of resistances 
+ * Library for calculating total resistance
+ * from an array of resistances
  *
  * Peter Püschel, 24.10.2016
  *
@@ -10,16 +10,16 @@
 
 #include <stdio.h>
 
-/* Funktion för att beräkna den totala resistansen för olika kopplade resistanser. 
- * Resistanserna kan kopplas parallellt eller i serie. 
- * 
+/* Funktion för att beräkna den totala resistansen för olika kopplade resistanser.
+ * Resistanserna kan kopplas parallellt eller i serie.
+ *
  * Parametrar
- * 
+ *
  * count: Antal resistanser
  * conn:  Kopplingstyp. Seriellt eller parallellt kopplade [ P | S ]
  * array: En pekare på en array av komponentvärden som är lika stor som count
  * Biblioteket kraschar inte om en "nollpekare" skickas till funktioen, dvs om array=0.
- * 
+ *
  * Returvärde:
  * Returvärdet är den resulterande resistansen
  *
@@ -54,11 +54,10 @@ float calc_resistance(int count, char conn, float *array)
 			result += 1.0/array[i];
 		}
 		result = 1.0/result;
-	}		
+	}
 	else{
 		return -1;
-	}				
+	}
 
 	return result;
 }
-

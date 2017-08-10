@@ -4,32 +4,32 @@
 
 //declarations
 int countplaces(float resid);
-float* calcE12(float remaining);	
+float* calcE12(float remaining);
 
-//main function, accepts argument (resistor value) from Lib1 
+//main function, accepts argument (resistor value) from Lib1
 //************************************************************
-int findresistors (float orig_resistance, float *res_array){	
+int e_resistance (float orig_resistance, float *res_array){
 	//declare function vars
 	int resisnum = 0;  //counter for calcE12 while loop
 	float *resisandresid;  //returned array with best resistor and the resid
 	int resistorsneeded = 0;  //actual resistors needed- the output
-	
+
 	//temp print function
 	//printf("\nE12 resistors (first three values in *res_array) that best match the orig_resistance value of %f: \n", orig_resistance);
-	
+
 	//while loop to find closest matching set of resistors for a given input resistor value
 	while (resisnum < 3){  //only want three values returned (from 0-x)
 		//calc closest e12 resistor and return resid
-		resisandresid = calcE12(orig_resistance);	
-				
+		resisandresid = calcE12(orig_resistance);
+
 		//process resisandresid results-save best resis val to res_array, resend resid (if >3 runs)
 		res_array[resisnum] = resisandresid[0];
 		orig_resistance = resisandresid[1];
-		
+
 		//continue (to 3 runs)
-		resisnum = resisnum + 1;	
+		resisnum = resisnum + 1;
 	}
-	
+
 	//count up the non-zero resistors in res_array
 	int counter3;
 	for(counter3 = 0; counter3 < 3; counter3++){
@@ -38,30 +38,30 @@ int findresistors (float orig_resistance, float *res_array){
 		}
 	}
 	//send the number of resistors needed back to main
-	return resistorsneeded;	
+	return resistorsneeded;
 }
 
 //subfunctions
 //**************
 //find closest e12 resistor, return this and the remaining resid (returned as a 2-member array)
-float* calcE12(float remaining){ 
+float* calcE12(float remaining){
 	//define e12 series
 	double e12[12] = {1.0, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2};
-	
-	//count places for e12 multiplier 
+
+	//count places for e12 multiplier
 	int places;
 	places = countplaces(remaining);
-	
+
 	//convert places value into the e12 multiplier
 	int i;
 	int Power;
 	Power = pow(10, places);
-	
-	//adjust e12 series according to multiplier	
+
+	//adjust e12 series according to multiplier
 	for (i = 0; i < 12; i++){
 		e12[i] = e12[i] * Power;
 	}
-	//identify best matching e12 resistor		
+	//identify best matching e12 resistor
 	//declare vars
 	int e12index;
 	float best;
@@ -80,14 +80,14 @@ float* calcE12(float remaining){
 			resid = remaining - best;
 			resisandresid[0] = best;
 			resisandresid[1] = resid;
-			//e12index == -1;			
+			//e12index == -1;
 			return resisandresid;
 		}
 	}
 	return 0;
-}	
+}
 
-//count places of resistor value for calculating the e12 multiplier 
+//count places of resistor value for calculating the e12 multiplier
 int countplaces(float resid){
 	if (resid <= 0){
 		int count = 0;

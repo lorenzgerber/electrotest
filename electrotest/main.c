@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../libresistance/libresistance.h"
-#include "../libpower/libpower.h"
+#include "../libresistance/resistance.h"
+#include "../libpower/power.h"
 
 
 /**
@@ -16,7 +16,7 @@
  *  @param argc number of arguments
  *  @param pointer to char array with the actual arguments
  */
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
 	float* resistances;  // Pekare till array med värden
 	float inputvalue;
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	printf("Ange spänningskälla i V: ");
 	if (fgets(buf, sizeof(buf), stdin) != NULL){
 		volt = atof(buf);
-	}	
+	}
 
 	/* Kopplingstyp */
 	do {
@@ -64,18 +64,18 @@ int main(int argc, char **argv)
 				break;
 			}
 			resistances[loop] = inputvalue;
- 	 	} 
+ 	 	}
 	}
 
 	if (count==0){
-		fprintf(stderr, "Inga resistanser angivna. Avslutar!\n");		
+		fprintf(stderr, "Inga resistanser angivna. Avslutar!\n");
 		goto error;
 	}
 
-	/* Gör beräkningar */	 
+	/* Gör beräkningar */
 	resistance = calc_resistance(count, method, resistances);
 	if (resistance == -1){
-		fprintf(stderr, "Felaktigt indata!\n");		
+		fprintf(stderr, "Felaktigt indata!\n");
 		goto error;
 	}
 	power = calc_power_r(volt, resistance);
@@ -95,4 +95,3 @@ error:
 	exit(EXIT_FAILURE);
 
 }
-
